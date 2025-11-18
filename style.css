@@ -1,0 +1,339 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pixelify Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #ffffff;
+  background-image: url("images/street7.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+  background-color: #050508;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+#top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(200, 145, 49);
+  border-bottom: 3px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 16px;
+  z-index: 1000;
+}
+
+#top-header h1 {
+  font-size: 2.25rem;
+  color: #000;
+  pointer-events: none;
+  text-align: center;
+}
+
+.header-link {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.header-link:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.left-link {
+  left: 16px;
+}
+
+.right-link {
+  right: 16px;
+}
+
+#street {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 110px 16px 80px;
+}
+
+.street-title {
+  text-align: center;
+  color: rgb(200, 145, 49);
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+.vendor {
+  background: rgb(200, 145, 49);
+  color: #000;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  padding: 20px 18px;
+  margin: 40px 0;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+}
+
+.vendor h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.vendor p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.vendor.left {
+  margin-left: 0;
+  margin-right: auto;
+  transform: translateX(-5%);
+}
+
+.vendor.right {
+  margin-left: auto;
+  margin-right: 0;
+  transform: translateX(5%);
+}
+
+.vendor iframe,
+.vendor video,
+.vendor img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 12px;
+  border-radius: 10px;
+}
+
+.vendor iframe {
+  aspect-ratio: 16 / 9;
+}
+
+.vendor-image {
+  max-width: 220px;
+}
+
+.final-vendor {
+  max-width: 900px;
+  width: 100%;
+  margin: 60px auto 80px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.dsi-overlay {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  z-index: 20;
+}
+
+.dsi-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dsi-start-button {
+  position: absolute;
+  top: 39%;
+  left: 66%;
+  transform: translate(-50%, -50%) rotate(32deg);
+  transform-origin: center;
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #ffffffaa;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dsi-start-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.dsi-lower-text {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(32deg);
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow: 0 0 4px #000;
+  pointer-events: none;
+  z-index: 25;
+  font-family: inherit;
+}
+
+.final-vendor-content {
+  display: none;
+  margin-top: 24px;
+  padding: 24px 16px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.6);
+}
+
+.final-vendor-content h2 {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+}
+
+.final-vendor-text {
+  color: #f3f3f3;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+body.final-vendor-started #player {
+  z-index: 0;
+}
+
+#player {
+  position: fixed;
+  width: 100px;
+  height: 135px;
+  background-image: url("images/protagonistLargeForward.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.sprite-hover {
+  outline: 2px dashed #ecd251;
+  outline-offset: 2px;
+}
+
+.game-button {
+  cursor: pointer;
+}
+
+main {
+  min-height: 120px;
+}
+
+@media (max-width: 900px) {
+  #top-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-link {
+    font-size: 0.9rem;
+  }
+
+  #street {
+    padding: 96px 12px 64px;
+  }
+
+  .vendor {
+    max-width: 100%;
+    margin: 32px auto;
+    transform: none;
+  }
+
+  .vendor.left,
+  .vendor.right {
+    transform: none;
+  }
+
+  .final-vendor {
+    margin: 48px auto 72px;
+  }
+
+  .dsi-overlay {
+    max-width: 500px;
+  }
+
+  .dsi-start-button {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  #player {
+    width: 80px;
+    height: 108px;
+  }
+}
+
+@media (max-width: 600px) {
+  #top-header {
+    padding: 10px 8px;
+  }
+
+  #top-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-link {
+    padding: 4px 8px;
+  }
+
+  #street {
+    padding: 80px 10px 56px;
+  }
+
+  .vendor {
+    padding: 18px 14px;
+  }
+
+  .vendor h2 {
+    font-size: 1.3rem;
+  }
+
+  .vendor p {
+    font-size: 0.9rem;
+  }
+
+  .dsi-overlay {
+    max-width: 420px;
+  }
+
+  .dsi-start-button {
+    top: 37%;
+    font-size: 0.8rem;
+  }
+
+  #player {
+    width: 68px;
+    height: 92px;
+  }
+}

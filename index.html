@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sam's Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header id="top-header">
+      <audio
+        id="ds-start-sound"
+        src="sounds/nintendo-ds-startup.mp3"
+      ></audio>
+
+      <a href="#" class="header-link left-link">Game Ring Left</a>
+      <h1>Sam's Website</h1>
+      <a href="#" class="header-link right-link">Game Ring Right</a>
+    </header>
+
+    <div id="player"></div>
+
+    <div id="street">
+      <h2 class="street-title"></h2>
+
+      <div class="vendor left">
+        <h2>About Me</h2>
+        <p>
+          Hi! My life has been shaped heavily by my mom and the Japanese half
+          that she gave me. This little website is to explore that half—take a
+          walk down with me!
+        </p>
+      </div>
+
+      <div class="vendor right">
+        <h2>Train Arrival</h2>
+        <audio controls>
+          <source src="sounds/japan_train.mp3" type="audio/mpeg" />
+        </audio>
+        <p>
+          The train is arriving at the station! This sound takes me back to my
+          childhood, and for any of you that have been to Japan, hopefully it
+          takes you back to your trip!
+        </p>
+      </div>
+
+      <div class="vendor left">
+        <h2>Japan in the 2000s</h2>
+        <iframe
+          id="yt-player-1"
+          class="sprite-yt-target"
+          src="https://www.youtube.com/embed/msSgxkHA04M?enablejsapi=1"
+          title="YouTube video 1"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+        <p>
+          This is what my environment was like in times I can't or can hardly
+          remember. Even without my familiarity, I feel like this video exudes
+          nostalgia, so I thought I could include it.
+        </p>
+      </div>
+
+      <div class="vendor right">
+        <h2>My backpack</h2>
+        <img
+          src="images/SamRandoseru.png"
+          alt="Randoseru Image"
+          class="vendor-image"
+        />
+        <p>
+          Just the image alone brings back memories of walking to elementary
+          school in my uniform and backpack. Fun fact, randoseru were engineered
+          to float in floods, protect the head in earthquakes, and last a child
+          throughout their adolescence! (No wonder they were $700.)
+        </p>
+      </div>
+
+      <div class="vendor left">
+        <h2>Old Pictures</h2>
+        <img
+          src="images/ChildhoodJapanPics.png"
+          alt="ChildhoodJapanPics Image"
+          class="vendor-image"
+        />
+        <p>
+          Tanabata with family, matsuri with my uncle, onsen with my sister, and
+          amusement parks with my cousin.
+        </p>
+      </div>
+
+      <div class="vendor right">
+        <h2>Grandma</h2>
+        <img
+          src="images/BaachanRainbow.png"
+          alt="BaachanRainbow Image"
+          class="vendor-image"
+        />
+        <p>Me, Sera, Baachan, and Rainbow!</p>
+      </div>
+
+      <div class="vendor left">
+        <h2>My Favorite Childhood Picture</h2>
+        <img
+          src="images/ChildhoodJapanPicWithMom.png"
+          alt="ChildhoodJapanPicWithMom Image"
+          class="vendor-image"
+        />
+        <p>
+          Can't exactly explain why, but my mom and I at the park is my
+          favorite childhood picture.
+        </p>
+      </div>
+
+      <div class="vendor right">
+        <h2>Memories, shot by Mom and Dad</h2>
+        <iframe
+          id="yt-player-2"
+          class="sprite-yt-target"
+          src="https://www.youtube.com/embed/STQlONCOAQw?enablejsapi=1"
+          title="YouTube video 2"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+        <p>
+          This video is a collection of memories captured by my parents. It's a
+          glimpse into my early years, many that I can't even remember!
+        </p>
+      </div>
+
+      <div class="vendor left">
+        <h2>Train Departure</h2>
+        <audio controls>
+          <source src="sounds/tokyo_station_5.mp3" type="audio/mpeg" />
+        </audio>
+        <p>
+          This melody lets me know that the train is coming to take me home.
+          Thanks for staying! Before you leave though, feel free to play my
+          game! It's called <em>Mumei</em>, meaning nameless. It's the same idea
+          of rediscovering lost memories and a past self!
+        </p>
+      </div>
+
+      <div class="vendor final-vendor">
+        <div class="dsi-overlay">
+          <img src="images/dsSprite.png" alt="DSi" class="dsi-image" />
+          <div class="dsi-screen-bg"></div>
+          <button class="dsi-start-button">
+            <span>START</span>
+          </button>
+          <div class="dsi-lower-text">Press START<br>to play Mumei&nbsp;&nbsp;</div>  
+</div>
+
+        <div class="final-vendor-content">
+          <h2>Here is my game!</h2>
+          <p class="final-vendor-text">
+            Mouse press on the screen to start moving with WASD.
+          </p>
+          <iframe
+            frameborder="0"
+            src="https://itch.io/embed-upload/15508489?color=333333"
+            allowfullscreen
+            width="400"
+            height="400"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <main></main>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+      const player = document.getElementById("player");
+      let x = 50;
+      let y = 50;
+      const speed = 8;
+      const keys = {};
+      let currentTarget = null;
+      let ytPlayer1 = null;
+      let ytPlayer2 = null;
+
+      function onYouTubeIframeAPIReady() {
+        const iframe1 = document.getElementById("yt-player-1");
+        const iframe2 = document.getElementById("yt-player-2");
+        if (iframe1) ytPlayer1 = new YT.Player("yt-player-1");
+        if (iframe2) ytPlayer2 = new YT.Player("yt-player-2");
+      }
+
+      document.addEventListener("keydown", (e) => {
+        const key = e.key.toLowerCase();
+        keys[key] = true;
+
+        const active = document.activeElement;
+        const isTyping =
+          active &&
+          (active.tagName === "INPUT" ||
+            active.tagName === "TEXTAREA" ||
+            active.isContentEditable);
+
+        if (
+          !isTyping &&
+          ["arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)
+        ) {
+          e.preventDefault();
+        }
+
+        if (!isTyping && (key === " " || key === "enter")) {
+          if (currentTarget) {
+            e.preventDefault();
+            activateTarget(currentTarget);
+          }
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        keys[e.key.toLowerCase()] = false;
+      });
+
+      const INTERACTIVE_SELECTOR =
+        'a, button, [role="button"], input, textarea, select, video, audio, iframe.sprite-yt-target, [tabindex]:not([tabindex="-1"])';
+
+      function activateTarget(el) {
+        const tag = el.tagName;
+
+        if (
+          tag === "IFRAME" &&
+          el.classList.contains("sprite-yt-target") &&
+          window.YT
+        ) {
+          let yt = null;
+          if (el.id === "yt-player-1" && ytPlayer1) yt = ytPlayer1;
+          if (el.id === "yt-player-2" && ytPlayer2) yt = ytPlayer2;
+
+          if (yt) {
+            const state = yt.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) yt.pauseVideo();
+            else yt.playVideo();
+            return;
+          }
+        }
+
+        if (tag === "VIDEO" || tag === "AUDIO") {
+          if (el.paused || el.ended) {
+            el.play().catch(() => {});
+          } else {
+            el.pause();
+          }
+          return;
+        }
+
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+          el.focus();
+          if (
+            el.type === "checkbox" ||
+            el.type === "radio" ||
+            el.type === "button" ||
+            el.type === "submit"
+          ) {
+            el.click();
+          }
+          return;
+        }
+
+        if (
+          tag === "BUTTON" ||
+          tag === "A" ||
+          el.getAttribute("role") === "button"
+        ) {
+          el.click();
+          return;
+        }
+
+        el.click();
+      }
+
+      function findInteractiveByOverlap() {
+        const playerRect = player.getBoundingClientRect();
+        const candidates = document.querySelectorAll(INTERACTIVE_SELECTOR);
+        let best = null;
+        let bestArea = 0;
+
+        candidates.forEach((el) => {
+          if (el === player) return;
+
+          const rect = el.getBoundingClientRect();
+
+          const overlapX = Math.max(
+            0,
+            Math.min(playerRect.right, rect.right) -
+              Math.max(playerRect.left, rect.left)
+          );
+          const overlapY = Math.max(
+            0,
+            Math.min(playerRect.bottom, rect.bottom) -
+              Math.max(playerRect.top, rect.top)
+          );
+          const area = overlapX * overlapY;
+
+          if (area > bestArea) {
+            bestArea = area;
+            best = el;
+          }
+        });
+
+        return bestArea > 0 ? best : null;
+      }
+
+      function update() {
+        const size = player.offsetWidth || 48;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const doc = document.documentElement;
+        const docHeight = doc.scrollHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+
+        const maxX = viewportWidth - size;
+        const maxY = viewportHeight - size;
+        const edgeMargin = 40;
+
+        if (keys["arrowleft"] || keys["a"]) x -= speed;
+        if (keys["arrowright"] || keys["d"]) x += speed;
+
+        if (keys["arrowdown"] || keys["s"]) {
+          const bottomOfPlayer = y + size;
+
+          if (bottomOfPlayer < viewportHeight - edgeMargin) {
+            y += speed;
+          } else {
+            const canScrollDown = scrollY + viewportHeight < docHeight;
+            if (canScrollDown) {
+              window.scrollBy(0, speed);
+            } else if (bottomOfPlayer < viewportHeight) {
+              y += speed;
+            }
+          }
+        }
+
+        if (keys["arrowup"] || keys["w"]) {
+          if (y > edgeMargin) {
+            y -= speed;
+          } else {
+            const canScrollUp = scrollY > 0;
+            if (canScrollUp) {
+              window.scrollBy(0, -speed);
+            } else if (y > 0) {
+              y -= speed;
+            }
+          }
+        }
+
+        if (x < 0) x = 0;
+        if (x > maxX) x = maxX;
+        if (y < 0) y = 0;
+        if (y > maxY) y = maxY;
+
+        player.style.left = x + "px";
+        player.style.top = y + "px";
+
+        const newTarget = findInteractiveByOverlap();
+        if (newTarget !== currentTarget) {
+          if (currentTarget) currentTarget.classList.remove("sprite-hover");
+          currentTarget = newTarget;
+          if (currentTarget) currentTarget.classList.add("sprite-hover");
+
+          const spriteRect = player.getBoundingClientRect();
+          const finalVendor = document.querySelector(".final-vendor");
+          const finalRect = finalVendor.getBoundingClientRect();
+
+          const overlappingFinalVendor =
+            spriteRect.bottom > finalRect.top &&
+            spriteRect.top < finalRect.bottom &&
+            spriteRect.right > finalRect.left &&
+            spriteRect.left < finalRect.right;
+
+          if (finalVendorContent.style.display === "block") {
+            const spriteRect2 = player.getBoundingClientRect();
+            const finalRect2 = finalVendor.getBoundingClientRect();
+
+            const overlappingFinalVendor2 =
+              spriteRect2.bottom > finalRect2.top &&
+              spriteRect2.top < finalRect2.bottom &&
+              spriteRect2.right > finalRect2.left &&
+              spriteRect2.left < finalRect2.right;
+
+            if (overlappingFinalVendor2) {
+              document.body.classList.add("final-vendor-started");
+            } else {
+              document.body.classList.remove("final-vendor-started");
+            }
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+
+      window.addEventListener("resize", () => {
+        const size = player.offsetWidth || 48;
+        const maxX = window.innerWidth - size;
+        const maxY = window.innerHeight - size;
+        x = Math.min(x, maxX);
+        y = Math.min(y, maxY);
+      });
+
+      const dsiOverlay = document.querySelector(".dsi-overlay");
+      const finalVendorContent = document.querySelector(".final-vendor-content");
+      const dsiStartButton = document.querySelector(".dsi-start-button");
+
+      if (dsiOverlay && finalVendorContent && dsiStartButton) {
+        dsiStartButton.addEventListener("click", () => {
+          const dsSound = document.getElementById("ds-start-sound");
+          if (dsSound) {
+            dsSound.currentTime = 0;
+            dsSound.play().catch(() => {});
+          }
+
+          dsiOverlay.style.display = "none";
+          dsiStartButton.style.display = "none";
+          finalVendorContent.style.display = "block";
+          document.body.classList.add("final-vendor-started");
+        });
+      }
+
+      update();
+    </script>
+  </body>
+</html>
